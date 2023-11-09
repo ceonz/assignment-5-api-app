@@ -49,3 +49,26 @@ function getVotes() {
 function getRandomFacts() {
   return request(`/facts`)
 }
+
+function getFavorites() {
+  return request(`/favourites`);
+}
+
+function createFavorite(imageId, subId) {
+  const payload = {
+    image_id: imageId,
+    sub_id: subId
+  };
+  return request(`/favourites`, {
+    method: 'POST',
+    body: JSON.stringify(payload)
+  });
+}
+
+function deleteFavorite(favouriteId) {
+  return request(`/favourites/${favouriteId}`, {
+    method: 'DELETE',
+  });
+}
+
+export { getAllImages, getMyUploadedImages, uploadImage, deleteImage, getVotes, getRandomFacts, getFavorites, createFavorite, deleteFavorite };
