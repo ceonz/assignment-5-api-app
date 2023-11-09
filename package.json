@@ -2,6 +2,7 @@
   "name": "assignment-5-api-app",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://ceonz.github.io/assignment-5-api-app/",
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

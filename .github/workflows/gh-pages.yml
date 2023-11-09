@@ -16,6 +16,10 @@ jobs:
       - name: Install dependencies
         run: npm install
 
+      - name: Create .env file
+        run: |
+          echo "REACT_APP_CAT_API_KEY=${{ secrets.REACT_APP_CAT_API_KEY }}" >> .env
+
       - run: npm ci
       - run: npm run build
 

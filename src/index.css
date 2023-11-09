@@ -3,3 +3,19 @@
   padding: 0;
   margin: 0;
 }
+
+.image-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-gap: 1rem;
+  padding: 1rem;
+  place-items: center;
+}
+
+.image-grid > img {
+  width: 100%;
+  aspect-ratio: 1/1;
+  object-fit: contain;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
