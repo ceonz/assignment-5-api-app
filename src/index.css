@@ -23,3 +23,30 @@
 .cat-breed {
   font-size: 50px;
 }
+.cat-card,
+.favorite-card {
+  margin: 10px;
+  padding: 10px;
+  text-align: center; 
+  width: 300px; 
+}
+
+.cat-card img,
+.favorite-card img {
+  max-width: 100%; 
+  height: auto;
+}
+
+.cat-card button,
+.favorite-card button {
+  width: 100%; 
+  padding: 10px 0; 
+  margin-top: 10px; 
+  cursor: pointer;
+  border: none;
+}
+
+.cat-card button:hover,
+.favorite-card button:hover {
+  background-color: #0080b3;
+}
