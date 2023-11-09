@@ -4,6 +4,12 @@
   margin: 0;
 }
 
+body {
+  font-family: sans-serif;
+  margin: 20px;
+  padding: 0;
+}
+
 .btn {
   padding: 10px 20px;
   margin: 5px;

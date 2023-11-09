@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import './index.css';
 
 const App = () => {
   const [imageData, setImageData] = useState(null);
@@ -11,7 +12,7 @@ const App = () => {
       const response = await fetch(url, {
         method: 'GET',
         headers: {
-          'X-Api-Key': 'api key',
+          'X-Api-Key': 'key',
           'Accept': 'image/jpg',
         },
       });
@@ -30,13 +31,16 @@ const App = () => {
     return (
       <div>
         <h2>Nature Background</h2>
-        <button className={'btn'} onClick={handleGetPictureClick}>Get Picture</button>
-        {imageData && (
-        <img src={imageData} alt="Nature Pic" />
-        )}
-        {/* <img src={imageData} alt="nature-pic" /> */}
-        {/* <h2>{pictureData.title}</h2>
-        <p>{pictureData.explanation}</p> */}
+        <body>
+          <button className={'btn'} onClick={handleGetPictureClick}>Get Picture</button>
+          {imageData && (
+          <img src={imageData} alt="Nature Pic" />
+          )}
+          {/* <img src={imageData} alt="nature-pic" /> */}
+          {/* <h2>{pictureData.title}</h2>
+          <p>{pictureData.explanation}</p> */}
+        </body>
+        
       </div>
     );
 };
