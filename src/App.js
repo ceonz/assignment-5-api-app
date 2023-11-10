@@ -79,17 +79,6 @@ export default function App() {
   return (
     <main className="container">
       <button onClick={getCatImages}>Get Cat Images</button>
-      <div className="image-grid">
-        {catImages.map((catImage) => (
-          <img
-            key={catImage.id}
-            src={catImage.url}
-            alt="Random cat"
-            width="300"
-            height="300"
-          />
-        ))}
-      </div>
       <label>
         Find Picture of Specific Cat Breeds:
         <input onChange={handleBreedChange} value={breed} />
