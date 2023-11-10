@@ -9,7 +9,6 @@ export default function App() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   useEffect(() => {
-    getVoteImages();
     getFavorites().then(setFavorites);
   }, []);
 
