@@ -11,7 +11,7 @@
 Successful API call in Postman
 ![Successful API call in Postman](https://i.imgur.com/ZNu7rj5.png)
 
-### [TheCatAPI Favourites Documentation](https://developers.thecatapi.com/view-account/ylX4blBYT9FaoVd6OhvR?report=mkzf_eYzV)
+### API Documentation: [TheCatAPI Favourites Documentation](https://developers.thecatapi.com/view-account/ylX4blBYT9FaoVd6OhvR?report=mkzf_eYzV)
 
 ### Usage 
 This endpoint is used to allow users to favorite and unfavorite cat images. Users can click on a button to favorite, which sends a `POST` request, and click again to unfavorite, sending a `DELETE` request.
