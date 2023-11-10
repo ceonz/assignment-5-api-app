@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import { getFavorites, createFavorite, deleteFavorite } from './apis';
-import './index.css'
 
 export default function App() {
   const [catImages, setCatImages] = useState([]);
@@ -10,14 +9,16 @@ export default function App() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   useEffect(() => {
-    getVoteImages();
     getFavorites().then(setFavorites);
   }, []);
 
   function getCatImages() {
     fetch('https://api.thecatapi.com/v1/images/search?limit=10')
       .then((response) => response.json())
-      .then((data) => setCatImages(data));
+      .then((data) => {
+        setCatImages(data);
+        setCurrentImageIndex(0);
+      });
   }
   
   function getSubId() {
@@ -65,20 +66,12 @@ export default function App() {
     }
   }
 
-  function getVoteImages() {
-    fetch('https://api.thecatapi.com/v1/images/search?limit=10')
-      .then((response) => response.json())
-      .then((data) => {
-        setCatImages(data);
-        setVoteHistory([]);
-        setCurrentImageIndex(0);
-      });
-  }
-
   const vote = (catId, value) => {
-    setVoteHistory([...voteHistory, { catId, value }]);
+    const imageUrl = catImages.find(cat => cat.id === catId)?.url;
+    setVoteHistory([...voteHistory, { catId, value, imageUrl }]);
     showNextImage();
   };
+
 
   const showNextImage = () => {
     setCurrentImageIndex((prevIndex) => prevIndex + 1);
@@ -87,17 +80,6 @@ export default function App() {
   return (
     <main className="container">
       <button onClick={getCatImages}>Get Cat Images</button>
-      <div className="image-grid">
-        {catImages.map((catImage) => (
-          <img
-            key={catImage.id}
-            src={catImage.url}
-            alt="Random cat"
-            width="300"
-            height="300"
-          />
-        ))}
-      </div>
       <label>
         Find Picture of Specific Cat Breeds:
         <input onChange={handleBreedChange} value={breed} />
@@ -137,10 +119,13 @@ export default function App() {
           </div>
         ))}
       </div>
+      <h2>Voting</h2>
       <div className="vote-grid">
-      <button onClick={getVoteImages}>Start Voting</button>
-        {catImages[currentImageIndex] && (
-          <div key={catImages[currentImageIndex].id}>
+        {catImages.length === 0 && (
+          <button onClick={getCatImages}>Start Voting</button>
+        )}
+        {catImages.length > 0 && catImages[currentImageIndex] && (
+          <div key={catImages[currentImageIndex].id} className="voting-card">
             <img
               src={catImages[currentImageIndex].url}
               alt="Random cat"
@@ -154,28 +139,31 @@ export default function App() {
             </div>
           </div>
         )}
+        {catImages.length > 0 && currentImageIndex >= catImages.length && (
+          <div>
+            <p>No more images to vote on. Fetch more?</p>
+            <button onClick={getCatImages}>Fetch More</button>
+          </div>
+        )}
       </div>
       <div>
         <h2>Vote History</h2>
-        <ul>
-          {voteHistory.map((vote, index) => {
-            const imageUrl = catImages.find((cat) => cat.id === vote.catId)?.url;
-            return (
-              <li key={index}>
-                {imageUrl && (
-                  <img
-                    src={imageUrl}
-                    alt={`Cat ${index + 1}`}
-                    width="50"
-                    height="50"
-                    className={vote.value > 0 ? 'liked' : 'disliked'}
-                  />
-                )}
-                {vote.value > 0 ? ' Liked' : ' Disliked'}
-              </li>
-            );
-          })}
-        </ul>
+        <ol>
+          {voteHistory.map((vote, index) => (
+            <li key={index}>
+              {vote.imageUrl && (
+                <img
+                  src={vote.imageUrl}
+                  alt={`Cat ${index + 1}`}
+                  width="50"
+                  height="50"
+                  className={vote.value > 0 ? 'liked' : 'disliked'}
+                />
+              )}
+              {vote.value > 0 ? ' Liked' : ' Disliked'}
+            </li>
+          ))}
+        </ol>
       </div>
     </main>
   );
