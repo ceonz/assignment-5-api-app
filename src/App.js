@@ -73,7 +73,6 @@ export default function App() {
     showNextImage();
   };
 
-
   const showNextImage = () => {
     setCurrentImageIndex((prevIndex) => prevIndex + 1);
   };
