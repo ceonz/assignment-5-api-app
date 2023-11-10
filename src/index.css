@@ -4,11 +4,17 @@
   margin: 0;
 }
 
-.image-grid {
+.image-grid,
+.favorites-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   grid-gap: 1rem;
   padding: 1rem;
+  place-items: center;
+}
+
+.vote-grid {
+  display: grid;
   place-items: center;
 }
 
@@ -24,7 +30,8 @@
   font-size: 50px;
 }
 .cat-card,
-.favorite-card {
+.favorite-card,
+.voting-card {
   margin: 10px;
   padding: 10px;
   text-align: center; 
@@ -32,13 +39,15 @@
 }
 
 .cat-card img,
-.favorite-card img {
+.favorite-card img,
+.voting-card img {
   max-width: 100%; 
   height: auto;
 }
 
 .cat-card button,
-.favorite-card button {
+.favorite-card button,
+.voting-card button {
   width: 100%; 
   padding: 10px 0; 
   margin-top: 10px; 
@@ -47,7 +56,8 @@
 }
 
 .cat-card button:hover,
-.favorite-card button:hover {
+.favorite-card button:hover,
+.voting-card button:hover {
   background-color: #0080b3;
 }
 
