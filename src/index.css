@@ -50,3 +50,11 @@
 .favorite-card button:hover {
   background-color: #0080b3;
 }
+
+.liked {
+  border: 2px solid green;
+}
+
+.disliked {
+  border: 2px solid red;
+}
