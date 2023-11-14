@@ -42,3 +42,19 @@ This endpoint is used to allow users to filter cat images by their breed. Users 
 Initially had attempted making this into a dropdown selector, however faced issues in obtaining all cat breed names. By having the user enter the breed, the id can be concatenated to the api endpoint and retrieve the desired image.
 
 --- 
+
+## Voting on images
+
+### API Provider: TheCatAPI
+
+### API Name: Voting
+
+![Successful API call in Postman](https://i.imgur.com/q8dmcGg.png)
+
+### API Documentation: [TheCatAPI Voting Documentation](https://developers.thecatapi.com/view-account/ylX4blBYT9FaoVd6OhvR?report=bOoHBz-8t)
+
+### Usage
+This endpoint is used to allow users to retrieve cat images to vote on, liking or disliking them. Afterwards the user is able to view the history of their votes.
+
+### Challenges
+Creating a vote history that updates based on liked and dislike. Faced issues in storing the liked/disliked images in votehistory using thier imageID and value.
